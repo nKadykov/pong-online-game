@@ -49,13 +49,18 @@ int main()
             window.close();
         }
 
+        game_state = game.getState();
+        menu_state = menu.getState();
+        gameover_state = gameover_window.getState();
+        button_state = menu.getButtonState();
+
         if (game_state == GameState::MENU || gameover_state == GameOverState::MENU) {
             state = State::MENU;
-            gameover_state = GameOverState::ON;
-            game_state = GameState::ON;
+            gameover_window.setState(GameOverState::ON);
+            game.setState(GameState::ON);
         }
 
-        if (game_state == GameState::MENU || button_state == ButtonState::START_GAME) {
+        if (gameover_state == GameOverState::OFF || button_state == ButtonState::START_GAME) {
             state = State::GAME;
             gameover_window.setState(GameOverState::ON);
             menu.setButtonState(ButtonState::NONE);

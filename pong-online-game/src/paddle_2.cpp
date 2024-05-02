@@ -46,8 +46,8 @@ void Paddle2::update(sf::Time dt) {
 	if (m_position.y < 0) {
 		m_position.y = 0;
 	}
-	if (m_position.y > 690) {
-		m_position.y = 690;
+	if (m_position.y > 620) {
+		m_position.y = 620;
 	}
 	m_shape.setPosition(m_position);
 }
