@@ -48,7 +48,7 @@ void Menu::draw(sf::RenderWindow& window) {
 		m_button_state = ButtonState::START_GAME;
 	}
 	if (m_button_vector[1]->isPushed(window)) {
-		m_button_state = ButtonState::START_GAME;
+		m_button_state = ButtonState::CLOSE;
 	}
 	window.draw(m_menu_sprite);
 	for (auto it = m_button_vector.begin(); it != m_button_vector.end(); it++) {

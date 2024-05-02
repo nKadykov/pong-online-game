@@ -14,7 +14,7 @@ Button::Button(int start_x, int start_y, const sf::Texture& texture) {
 	m_coordinates.x_left = m_rectangle.left;
 	m_coordinates.x_right = m_coordinates.x_left + m_rectangle.width;
 	m_coordinates.y_up = m_rectangle.top;
-	m_coordinates.x_right = m_coordinates.y_up + m_rectangle.height;
+	m_coordinates.y_down = m_coordinates.y_up + m_rectangle.height;
 }
 
 void Button::setPosition(int start_x, int start_y) {
