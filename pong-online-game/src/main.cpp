@@ -28,7 +28,7 @@ int main()
     GameOverWindow gameover_window;
     gameover_window.setPosition(300, 200);
 
-    State state = State::GAME;
+    State state = State::MENU;
     MenuState menu_state = MenuState::ON;
     GameOverState gameover_state = GameOverState::ON;
     ButtonState button_state = ButtonState::NONE;

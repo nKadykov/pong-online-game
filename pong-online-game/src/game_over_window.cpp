@@ -26,15 +26,17 @@ void GameOverWindow::setState(GameOverState state) {
 void GameOverWindow::draw(sf::RenderWindow& window) {
 	m_state = GameOverState::ON;
 	window.clear();
-	if ((sf::Mouse::getPosition(window).x < 850) && (sf::Mouse::getPosition(window).x > 420) && (sf::Mouse::getPosition(window).y > 400) && (sf::Mouse::getPosition(window).y < 550)) {
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			m_state = GameOverState::OFF;
-		}
+
+	Button button(420, 400, m_button_texture);
+	if (button.isPushed(window)) {
+		m_state = GameOverState::OFF;
 	}
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) {
 		m_state = GameOverState::MENU;
 	}
+
 	window.draw(m_background_sprite);
 	window.draw(m_sprite);
-	window.draw(m_button_sprite);
+	button.draw(window);
 }

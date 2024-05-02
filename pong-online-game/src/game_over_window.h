@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "button.h"
 
 enum class GameOverState { ON, OFF, MENU };
 
