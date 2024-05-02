@@ -17,7 +17,6 @@ void Game::Start(sf::RenderWindow& window) {
 
     sf::Music music;
     music.openFromFile("resources/back1.mp3");
-    music.play();
 
     sf::Clock clock;
     sf::Time dt;
@@ -75,6 +74,18 @@ void Game::Start(sf::RenderWindow& window) {
         }
         else {
             paddle_2.stopDown();
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+            if (music.Playing) {
+                music.pause();
+            }
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
+            if (music.Paused) {
+                music.play();
+            }
         }
 
         if (ball.getPosition().left < 0 || ball.getPosition().left + ball.getPosition().width > 1280) {
