@@ -4,7 +4,7 @@ Paddle2::Paddle2(float startX, float startY) {
 	m_position.x = startX;
 	m_position.y = startY;
 
-	m_shape.setSize(sf::Vector2f(100, 12));
+	m_shape.setSize(sf::Vector2f(10, 100));
 	m_shape.setFillColor(sf::Color::Blue);
 	m_shape.setOutlineColor(sf::Color::White);
 	m_shape.setOutlineThickness(2);
@@ -50,4 +50,8 @@ void Paddle2::update(sf::Time dt) {
 		m_position.x = 690;
 	}
 	m_shape.setPosition(m_position);
+}
+
+void Paddle2::draw(sf::RenderWindow& window) {
+	window.draw(m_shape);
 }

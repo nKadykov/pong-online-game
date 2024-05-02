@@ -1,15 +1,15 @@
 #include "button.h"
 
 Button::Button(int start_x, int start_y, const sf::Texture& texture) {
-	m_button_texture = texture;
-	m_button_sprite.setTexture(m_button_texture);
+	m_texture = texture;
+	m_sprite.setTexture(m_texture);
 
-	m_button_position.x = start_x;
-	m_button_position.y = start_y;
+	m_position.x = start_x;
+	m_position.y = start_y;
 
-	m_button_sprite.setPosition(m_button_position);
+	m_sprite.setPosition(m_position);
 
-	m_rectangle = m_button_sprite.getGlobalBounds();
+	m_rectangle = m_sprite.getGlobalBounds();
 
 	m_coordinates.x_left = m_rectangle.left;
 	m_coordinates.x_right = m_coordinates.x_left + m_rectangle.width;
@@ -18,28 +18,28 @@ Button::Button(int start_x, int start_y, const sf::Texture& texture) {
 }
 
 void Button::setPosition(int start_x, int start_y) {
-	m_button_position.x = start_x;
-	m_button_position.y = start_y;
+	m_position.x = start_x;
+	m_position.y = start_y;
 }
 
 void Button::setSprite(const sf::Sprite& sprite) {
-	m_button_sprite = sprite;
+	m_sprite = sprite;
 }
 
 void Button::setTexture(const sf::Texture& texture) {
-	m_button_texture = texture;
+	m_texture = texture;
 }
 
 sf::Vector2f Button::getPosition() {
-	return m_button_position;
+	return m_position;
 }
 
 sf::Sprite Button::getSprite() {
-	return m_button_sprite;
+	return m_sprite;
 }
 
 sf::Texture Button::getTexture() {
-	return m_button_texture;
+	return m_texture;
 }
 
 bool Button::isPushed(const sf::RenderWindow& window) const {
@@ -55,5 +55,5 @@ bool Button::isPushed(const sf::RenderWindow& window) const {
 }
 
 void Button::draw(sf::RenderWindow& window) const {
-	window.draw(m_button_sprite);
+	window.draw(m_sprite);
 }

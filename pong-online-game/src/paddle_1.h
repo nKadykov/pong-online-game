@@ -29,4 +29,6 @@ public:
 	void stopDown() override;
 
 	void update(sf::Time dt);
+
+	void draw(sf::RenderWindow&);
 };

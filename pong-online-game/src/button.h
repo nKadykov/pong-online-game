@@ -11,9 +11,9 @@ struct RectangleCoordinate {
 class Button
 {
 private:
-	sf::Texture m_button_texture;
-	sf::Sprite m_button_sprite;
-	sf::Vector2f m_button_position;
+	sf::Texture m_texture;
+	sf::Sprite m_sprite;
+	sf::Vector2f m_position;
 	sf::FloatRect m_rectangle;
 	RectangleCoordinate m_coordinates;
 public:

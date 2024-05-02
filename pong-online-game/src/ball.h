@@ -4,7 +4,7 @@
 class Ball
 {
 	sf::Vector2f m_position;
-	sf::CircleShape m_ball_shape;
+	sf::CircleShape m_shape;
 
 	float m_speed = 400;
 	float m_direction_x = 1.0f;
@@ -24,9 +24,8 @@ public:
 
 	float getXVelocity();
 
-	//void bounceSides();
-	void bounceTop();
-	void bounceDown();
+	void bounceSide();
 	void hitBall();
 	void update(sf::Time dt);
+	void draw(sf::RenderWindow&);
 };

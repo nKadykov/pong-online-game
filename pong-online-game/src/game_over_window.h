@@ -6,13 +6,13 @@ enum class GameOverState { ON, OFF, MENU };
 class GameOverWindow
 {
 private:
-	sf::Texture m_game_over_texture;
-	sf::Sprite m_game_over_sprite;
+	sf::Texture m_texture;
+	sf::Sprite m_sprite;
 	sf::Texture m_background_texture;
 	sf::Sprite m_background_sprite;
 	sf::Texture m_button_texture;
 	sf::Sprite m_button_sprite;
-	GameOverState m_game_over_state;
+	GameOverState m_state;
 public:
 	GameOverWindow();
 	GameOverWindow(const GameOverWindow&) = delete;

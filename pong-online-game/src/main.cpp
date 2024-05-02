@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "game_over_window.h"
 #include "menu.h"
+#include "game.h"
 
 enum class State { GAME, GAMEOVER, MENU };
 
@@ -27,10 +28,11 @@ int main()
     GameOverWindow gameover_window;
     gameover_window.setPosition(300, 200);
 
-    State state = State::MENU;
+    State state = State::GAME;
     MenuState menu_state = MenuState::ON;
     GameOverState gameover_state = GameOverState::ON;
     ButtonState button_state = ButtonState::NONE;
+    GameState game_state = GameState::ON;
 
     while (window.isOpen()) {
 
@@ -43,6 +45,11 @@ int main()
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
             window.close();
+        }
+
+        if (game_state == GameState::MENU || gameover_state == GameOverState::MENU) {
+            state = State::MENU;
+            gameover_state = GameOverState::ON;
         }
 
         switch (state) {
