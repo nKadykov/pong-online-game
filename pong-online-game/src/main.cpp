@@ -34,6 +34,8 @@ int main()
     ButtonState button_state = ButtonState::NONE;
     GameState game_state = GameState::ON;
 
+    Game game;
+
     while (window.isOpen()) {
 
         window.clear();
@@ -50,9 +52,28 @@ int main()
         if (game_state == GameState::MENU || gameover_state == GameOverState::MENU) {
             state = State::MENU;
             gameover_state = GameOverState::ON;
+            game_state = GameState::ON;
+        }
+
+        if (game_state == GameState::MENU || button_state == ButtonState::START_GAME) {
+            state = State::GAME;
+            gameover_window.setState(GameOverState::ON);
+            menu.setButtonState(ButtonState::NONE);
+        }
+
+        if (game_state == GameState::LOSE) {
+            state = State::GAMEOVER;
+            game.setState(GameState::ON);
+        }
+
+        if (button_state == ButtonState::CLOSE) {
+            window.close();
         }
 
         switch (state) {
+        case State::GAME:
+            game.Start(window);
+            break;
         case State::GAMEOVER:
             gameover_window.draw(window);
             break;
@@ -63,4 +84,6 @@ int main()
 
         window.display();
     }
+
+    return 0;
 }
