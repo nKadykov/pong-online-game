@@ -19,24 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="network_client.cpp" />
     <ClCompile Include="src\ball.cpp" />
     <ClCompile Include="src\button.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\game_over_window.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\menu.cpp" />
+    <ClCompile Include="src\network_client.cpp" />
     <ClCompile Include="src\paddle.cpp" />
     <ClCompile Include="src\paddle_1.cpp" />
     <ClCompile Include="src\paddle_2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="network_client.h" />
     <ClInclude Include="src\ball.h" />
     <ClInclude Include="src\button.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\game_over_window.h" />
     <ClInclude Include="src\menu.h" />
+    <ClInclude Include="src\network_client.h" />
     <ClInclude Include="src\paddle.h" />
     <ClInclude Include="src\paddle_1.h" />
     <ClInclude Include="src\paddle_2.h" />

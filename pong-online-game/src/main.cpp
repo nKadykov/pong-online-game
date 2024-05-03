@@ -3,6 +3,7 @@
 #include "game_over_window.h"
 #include "menu.h"
 #include "game.h"
+#include "network_client.h"
 
 enum class State { GAME, GAMEOVER, MENU };
 

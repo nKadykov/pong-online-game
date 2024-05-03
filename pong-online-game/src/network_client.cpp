@@ -65,7 +65,7 @@ sf::Socket::Status NetworkClient::receiveClientName(std::vector < std::string>& 
 		names_vector.push_back(name);
 	}
 
-	std::cout << "receaveClientName(): Client names read\n";
+	std::cout << "receiveClientName(): Client names read\n";
 
 	return sf::Socket::Status::Done;
 }

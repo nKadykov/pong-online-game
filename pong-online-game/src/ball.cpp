@@ -7,7 +7,7 @@ Ball::Ball(float startX, float startY) {
 	m_shape.setRadius(15);
 	m_shape.setFillColor(sf::Color::Green);
 	m_shape.setOutlineThickness(2);
-	m_shape.setOutlineColor(sf::Color::White);
+	m_shape.setOutlineColor(sf::Color::Black);
 	m_shape.setPosition(m_position);
 }
 

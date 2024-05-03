@@ -6,7 +6,7 @@ Paddle2::Paddle2(float startX, float startY) {
 
 	m_shape.setSize(sf::Vector2f(15, 70));
 	m_shape.setFillColor(sf::Color::Blue);
-	m_shape.setOutlineColor(sf::Color::White);
+	m_shape.setOutlineColor(sf::Color::Black);
 	m_shape.setOutlineThickness(2);
 
 	m_shape.setPosition(m_position);
