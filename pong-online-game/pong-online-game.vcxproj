@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="network_client.cpp" />
     <ClCompile Include="src\ball.cpp" />
     <ClCompile Include="src\button.cpp" />
     <ClCompile Include="src\game.cpp" />
@@ -30,6 +31,7 @@
     <ClCompile Include="src\paddle_2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="network_client.h" />
     <ClInclude Include="src\ball.h" />
     <ClInclude Include="src\button.h" />
     <ClInclude Include="src\game.h" />
