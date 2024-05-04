@@ -12,12 +12,29 @@ Paddle1::Paddle1(float startX, float startY) {
 	m_shape.setPosition(m_position);
 }
 
-sf::FloatRect Paddle1::getPosition() {
+void Paddle1::setName(std::string name) {
+	m_name = name;
+}
+
+void Paddle1::setPosition(int x, int y) {
+	m_position.x = x;
+	m_position.y = y;
+}
+
+sf::FloatRect Paddle1::getBounds() {
 	return m_shape.getGlobalBounds();
 }
 
 sf::RectangleShape Paddle1::getShape() {
 	return m_shape;
+}
+
+sf::Vector2f Paddle1::getPosition() {
+	return m_position;
+}
+
+std::string Paddle1::getName() {
+	return m_name;
 }
 
 void Paddle1::moveUp() {

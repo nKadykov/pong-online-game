@@ -68,7 +68,7 @@ int main()
         }
 
         if (game_state == GameState::LOSE) {
-            state = State::GAMEOVER;
+            //state = State::GAMEOVER;
             game.setState(GameState::ON);
         }
 
