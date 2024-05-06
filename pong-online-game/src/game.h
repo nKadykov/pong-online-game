@@ -21,6 +21,7 @@ private:
 	sf::IpAddress m_ip;
 	unsigned short m_port;
 
+	Paddle1 m_paddle_1;
 	Paddle2 m_paddle_2;
 public:
 	Game();
@@ -35,9 +36,8 @@ public:
 	std::string getName() const;
 
 	void setUserInputData();
-	void addPaddle(std::string name);
 
-	void setConnection(Paddle1&);
+	void setConnection();
 
 	void Start(sf::RenderWindow& sf);
 };

@@ -33,7 +33,7 @@ sf::Socket::Status NetworkClient::registerOnServer(sf::IpAddress serverIp, unsig
 		return sf::Socket::Status::Error;
 }
 
-sf::Socket::Status NetworkClient::receiveConnectedClientName(std::vector<std::string>& namesVec) {
+sf::Socket::Status NetworkClient::receiveConnectedClientName(std::string& received_name) {
 	if (!m_registration_socket.isBlocking()) {
 		m_registration_socket.setBlocking(true);
 	}
@@ -53,7 +53,7 @@ sf::Socket::Status NetworkClient::receiveConnectedClientName(std::vector<std::st
 				std::cout << "receiveClientName(): No clients are connected, you are first\n";
 				return sf::Socket::Status::Done;
 			}
-			namesVec.push_back(name);
+			received_name = name;
 		}
 		else {
 			std::cout << "receiveClientName() : Failed to read packet\n";

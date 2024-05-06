@@ -9,7 +9,7 @@ public:
 	NetworkClient();
 	sf::Socket::Status init(unsigned short preferablePort = sf::Socket::AnyPort);
 	sf::Socket::Status registerOnServer(sf::IpAddress, unsigned short, std::string);
-	sf::Socket::Status receiveConnectedClientName(std::vector<std::string>&);
+	sf::Socket::Status receiveConnectedClientName(std::string&);
 	sf::Socket::Status receiveData(sf::Packet&, sf::IpAddress, unsigned short);
 	sf::Socket::Status sendData(sf::Packet);
 	void setSendFrequency(sf::Int32);

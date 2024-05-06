@@ -27,22 +27,10 @@ void Game::setUserInputData() {
     std::cin >> m_name;
 }
 
-//void Game::addPaddle(std::string name) {
-//    Paddle1 paddle1;
-//    if (m_paddle_vector.empty()) {
-//        m_paddle_vector.push_back(Paddle1(10, 720 / 2));
-//    }
-//    if (m_paddle_vector.size() == 1) {
-//        m_paddle_vector.push_back(Paddle1(1260, 720 / 2));
-//    }
-//    m_paddle_vector.back().setName(name);
-//}
-
-void Game::setConnection(Paddle1& paddle_1) {
+void Game::setConnection() {
 
     sf::Packet received_packet;
     sf::Packet send_packet;
-
 
     if (m_client.receiveData(received_packet, m_ip, m_port) == sf::Socket::Status::Done) {
         if (received_packet.getDataSize() > 0) {
@@ -51,7 +39,6 @@ void Game::setConnection(Paddle1& paddle_1) {
                 if (str == "NEW") {
                     if (received_packet >> str) {
                         if (str != m_name) {
-                            //addPaddle(str);
                             m_paddle_2.setName(str);
                             std::cout << "New player: " << m_paddle_2.getName() << std::endl;
                         }
@@ -63,9 +50,8 @@ void Game::setConnection(Paddle1& paddle_1) {
                         received_packet >> str;
                         received_packet >> x;
                         received_packet >> y;
-                        if (str == m_paddle_2.getName()) {
-                            m_paddle_2.setPosition(x, y);
-                        }
+                        m_paddle_2.setName(str);
+                        m_paddle_2.setPosition(x, y);
                     }
                 }
             }
@@ -73,7 +59,7 @@ void Game::setConnection(Paddle1& paddle_1) {
     }
 
     send_packet.clear();
-    send_packet << "DATA" << paddle_1.getPosition().x << paddle_1.getPosition().y;
+    send_packet << "DATA" << m_paddle_1.getPosition().x << m_paddle_1.getPosition().y;
     m_client.sendData(send_packet);
 }
 
@@ -87,10 +73,7 @@ void Game::Start(sf::RenderWindow& window) {
     sf::Event event;
     Ball ball(1280 / 2, 10.0);
 
-    //Paddle1 paddle_1(10, 720 / 2);
-    //Paddle2 paddle_2(1260, 720 / 2);
-
-    Paddle1 paddle_1(10, 720 / 2);
+    m_paddle_1.setPosition(10, 720 / 2);
 
     this->setUserInputData();
 
@@ -98,17 +81,14 @@ void Game::Start(sf::RenderWindow& window) {
     m_client.init();
     m_client.registerOnServer(m_ip, m_port, m_name);
 
-    std::vector<std::string> name_vector;
-    m_client.receiveConnectedClientName(name_vector);
-    //for (int i = 0; i < name_vector.size(); ++i) {
-    //    this->addPaddle(name_vector[i]);
-    //}
+    std::string received_name;
+    m_client.receiveConnectedClientName(received_name);
     m_paddle_2.setPosition(1260, 720 / 2);
-    m_paddle_2.setName(name_vector[0]);
+    m_paddle_2.setName(received_name);
 
     while (window.isOpen() && m_state == GameState::ON) {
 
-        this->setConnection(paddle_1);
+        this->setConnection();
 
         dt = clock.restart();
 
@@ -118,7 +98,7 @@ void Game::Start(sf::RenderWindow& window) {
             }
         }
 
-        if (ball.getPosition().intersects(paddle_1.getBounds())) {
+        if (ball.getPosition().intersects(m_paddle_1.getBounds())) {
             ball.hitBall();
         }
 
@@ -159,17 +139,17 @@ void Game::Start(sf::RenderWindow& window) {
         //}
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-            paddle_1.moveUp();
+            m_paddle_1.moveUp();
         }
         else {
-            paddle_1.stopUp();
+            m_paddle_1.stopUp();
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-            paddle_1.moveDown();
+            m_paddle_1.moveDown();
         }
         else {
-            paddle_1.stopDown();
+            m_paddle_1.stopDown();
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
@@ -194,18 +174,18 @@ void Game::Start(sf::RenderWindow& window) {
 
         window.clear();
         ball.update(dt);
-        paddle_1.update(dt);
+        m_paddle_1.update(dt);
         for (int i = 0; i < m_paddle_vector.size(); ++i) {
             m_paddle_vector[i].update(dt);
         }
-        //paddle_1.update(dt);
-        //paddle_2.update(dt);
+        m_paddle_1.update(dt);
+        m_paddle_2.update(dt);
 
         window.draw(m_sprite);
         ball.draw(window);
-        //paddle_1.draw(window);
-        //paddle_2.draw(window);
-        paddle_1.draw(window);
+        m_paddle_1.draw(window);
+        m_paddle_2.draw(window);
+        m_paddle_1.draw(window);
         for (int i = 0; i < m_paddle_vector.size(); ++i) {
             m_paddle_vector[i].draw(window);
         }
